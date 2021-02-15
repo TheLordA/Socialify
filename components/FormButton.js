@@ -13,6 +13,7 @@ const FormButton = ({ buttonTitle, ...rest }) => {
 const styles = StyleSheet.create({
 	buttonContainer: {
 		marginTop: 10,
+		marginBottom: 15,
 		width: "100%",
 		height: windowHeight / 15,
 		backgroundColor: "#2e64e5",
