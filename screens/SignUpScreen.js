@@ -54,7 +54,7 @@ const SignupScreen = ({ navigation }) => {
 				<Text style={[styles.color_textPrivate, { color: "#e88832" }]}>Privacy Policy</Text>
 			</View>
 
-			{Platform.OS === "android" ? (
+			{/* {Platform.OS === "android" ? (
 				<View>
 					<SocialButton
 						buttonTitle="Sign Up with Facebook"
@@ -72,11 +72,14 @@ const SignupScreen = ({ navigation }) => {
 						onPress={() => {}}
 					/>
 				</View>
-			) : null}
+			) : null} */}
 
-			<TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate("Login")}>
-				<Text style={styles.navButtonText}>Have an account? Sign In</Text>
-			</TouchableOpacity>
+			<View style={styles.textPrivate}>
+				<Text style={styles.color_textPrivate}>Already have an account?</Text>
+				<TouchableOpacity onPress={() => navigation.navigate("Login")}>
+					<Text style={styles.callToAction}> Sign In</Text>
+				</TouchableOpacity>
+			</View>
 		</View>
 	);
 };
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
 	text: {
 		fontFamily: "Kufam-SemiBoldItalic",
 		fontSize: 28,
-		marginBottom: 10,
+		marginBottom: 40,
 		color: "#051d5f",
 	},
 	navButton: {
@@ -107,15 +110,17 @@ const styles = StyleSheet.create({
 	textPrivate: {
 		flexDirection: "row",
 		flexWrap: "wrap",
-		marginVertical: 35,
+		marginVertical: 20,
 		justifyContent: "center",
 	},
 	color_textPrivate: {
-		fontSize: 13,
+		fontSize: 15,
 		fontWeight: "400",
 		fontFamily: "Lato-Regular",
 		color: "grey",
+		marginTop: 5,
 	},
+	callToAction: { fontSize: 20, fontWeight: "400", fontFamily: "Lato-Regular", color: "#2e64e5" },
 });
 
 export default SignupScreen;
