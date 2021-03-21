@@ -9,6 +9,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import OnBoardingScreen from "./screens/OnboardingScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignUpScreen";
+import HomeScreen from "./screens/HomeScreen";
 
 const Stack = createStackNavigator();
 
@@ -66,6 +67,7 @@ const App = () => {
 						),
 					})}
 				/>
+				<Stack.Screen name="Home" component={HomeScreen} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

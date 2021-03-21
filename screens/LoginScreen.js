@@ -30,7 +30,7 @@ const LoginScreen = ({ navigation }) => {
 				secureTextEntry={true}
 			/>
 
-			<FormButton buttonTitle="Sign In" onPress={() => alert("Login Clicked !!!")} />
+			<FormButton buttonTitle="Sign In" onPress={() => navigation.navigate("Home")} />
 
 			<View style={{ flexDirection: "row", alignItems: "center", marginBottom: 10, marginTop: 10 }}>
 				<View style={{ flex: 1, height: 1, backgroundColor: "black" }} />
