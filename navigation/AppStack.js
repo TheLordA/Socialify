@@ -93,7 +93,7 @@ const MessageStack = ({ navigation }) => (
 			name="Chat"
 			component={ChatScreen}
 			options={({ route }) => ({
-				headerTitle: getHeaderTitle(route),
+				title: route.params.userName,
 				headerBackTitleVisible: false,
 			})}
 		/>
@@ -127,6 +127,13 @@ const ProfileStack = ({ navigation }) => (
 );
 
 const AppStack = () => {
+	const getTabBarVisibility = (route) => {
+		const routeName = getFocusedRouteNameFromRoute(route);
+		if (routeName === "Chat") {
+			return false;
+		}
+		return true;
+	};
 	return (
 		<Tab.Navigator
 			tabBarOptions={{
@@ -138,7 +145,6 @@ const AppStack = () => {
 				component={FeedStack}
 				options={({ route }) => ({
 					tabBarLabel: "Home",
-					// tabBarVisible: route.state && route.state.index === 0,
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons name="home-outline" color={color} size={size} />
 					),
@@ -148,6 +154,7 @@ const AppStack = () => {
 				name="Messages"
 				component={MessageStack}
 				options={({ route }) => ({
+					tabBarVisible: getTabBarVisibility(route),
 					tabBarIcon: ({ color, size }) => (
 						<Ionicons name="chatbox-ellipses-outline" color={color} size={size} />
 					),
