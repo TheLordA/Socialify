@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import moment from "moment";
+
 import {
 	Container,
 	Card,
@@ -20,29 +20,11 @@ import {
 
 import ProgressiveImage from "./ProgressiveImage";
 
-const PostCard = ({ item, onDelete, onPress }) => {
+const PostCard = ({ item, onDelete, onPress, feed }) => {
 	const [userData, setUserData] = useState(null);
 
 	const likeIcon = item.liked ? "heart" : "heart-outline";
 	const likeIconColor = item.liked ? "#2e64e5" : "#333";
-	let likeText;
-	let commentText;
-
-	if (item.likes == 1) {
-		likeText = "1 Like";
-	} else if (item.likes > 1) {
-		likeText = item.likes + " Likes";
-	} else {
-		likeText = "Like";
-	}
-
-	if (item.comments == 1) {
-		commentText = "1 Comment";
-	} else if (item.comments > 1) {
-		commentText = item.comments + " Comments";
-	} else {
-		commentText = "Comment";
-	}
 
 	return (
 		<Card key={item.id}>
@@ -62,14 +44,15 @@ const PostCard = ({ item, onDelete, onPress }) => {
 							{userData ? userData.lname || "User" : "User"}
 						</UserName>
 					</TouchableOpacity>
-					<PostTime>{moment([2020, 0, 29]).fromNow()}</PostTime>
+					<PostTime>{item.postTime}</PostTime>
 				</UserInfoText>
 			</UserInfo>
 
 			{item.postImg != null ? (
 				<ProgressiveImage
 					defaultImageSource={require("../assets/images/default-img.jpg")}
-					source={{ uri: item.postImg }}
+					source={item.postImg}
+					// source={{ uri: item.postImg }}
 					style={{ width: "100%", height: 250 }}
 					resizeMode="cover"
 				/>
@@ -77,16 +60,24 @@ const PostCard = ({ item, onDelete, onPress }) => {
 				<Divider />
 			)}
 
-			{/* <PostText>{item.post}</PostText> */}
+			{feed ? <PostText>{item.post}</PostText> : null}
 
 			<InteractionWrapper>
 				<Interaction active={item.liked}>
 					<Ionicons name={likeIcon} size={25} color={likeIconColor} />
-					<InteractionText active={item.liked}>{likeText}</InteractionText>
+					<InteractionText active={item.liked}>
+						{item.likes.length === 1
+							? item.likes.length + " Like"
+							: item.likes.length + " Likes"}
+					</InteractionText>
 				</Interaction>
 				<Interaction>
 					<Ionicons name="md-chatbubble-outline" size={25} />
-					<InteractionText>{commentText}</InteractionText>
+					<InteractionText>
+						{item.comments.length === 1
+							? item.comments.length + " Comment"
+							: item.comments.length + " Comments"}
+					</InteractionText>
 				</Interaction>
 				{/* {user ? (
 					user.uid == item.userId ? (

@@ -6,13 +6,15 @@ import PostCard from "../components/PostCard";
 const ProfileScreen = ({ navigation, route }) => {
 	const [posts, setPosts] = useState([
 		{
-			id: 1,
-			liked: false,
-			likes: 3,
-			comments: 3,
-			postTime: "20.07.2020",
-			post: "test body Post",
-			postImg: "",
+			id: "1",
+			userName: "Jenny Doe",
+			userImg: require("../assets/images/users/user-3.jpg"),
+			postTime: "4 mins ago",
+			post: "Hey there, this is my test for a post of my social app in React Native.",
+			postImg: require("../assets/images/posts/post-img-3.jpg"),
+			liked: true,
+			likes: [{ id: 1 }],
+			comments: [{ id: "5", commentText: "test comments body" }],
 		},
 	]);
 	const [loading, setLoading] = useState(true);

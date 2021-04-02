@@ -96,6 +96,7 @@ const HomeScreen = ({ navigation }) => {
 	setTimeout(() => {
 		setLoading(false);
 	}, 4000);
+
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
 			{loading ? (
@@ -137,15 +138,16 @@ const HomeScreen = ({ navigation }) => {
 					</SkeletonPlaceholder>
 				</ScrollView>
 			) : (
-				<Container>
+				<View style={{ marginTop: 15, marginLeft: 15, marginRight: 15 }}>
 					<FlatList
 						data={Posts}
 						renderItem={({ item }) => (
 							<PostCard
+								feed={true}
 								item={item}
 								onDelete={handleDelete}
 								onPress={() =>
-									navigation.navigate("HomeProfile", { userId: item.userId })
+									navigation.navigate("Home Profile", { userId: item.userId })
 								}
 							/>
 						)}
@@ -154,7 +156,7 @@ const HomeScreen = ({ navigation }) => {
 						ListFooterComponent={ListHeader}
 						showsVerticalScrollIndicator={false}
 					/>
-				</Container>
+				</View>
 			)}
 		</SafeAreaView>
 	);

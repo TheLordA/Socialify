@@ -66,7 +66,7 @@ const FeedStack = ({ navigation }) => (
 			}}
 		/>
 		<Stack.Screen
-			name="HomeProfile"
+			name="Home Profile"
 			component={ProfileScreen}
 			options={{
 				headerTitleAlign: "center",

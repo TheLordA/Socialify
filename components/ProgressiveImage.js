@@ -23,19 +23,23 @@ class ProgressiveImage extends React.Component {
 		const { defaultImageSource, source, style, ...props } = this.props;
 		return (
 			<View style={styles.container}>
-				<Animated.Image
-					{...props}
-					source={defaultImageSource}
-					style={[style, { opacity: this.defaultImageAnimated }]}
-					onLoad={this.handleDefaultImageLoad}
-					blurRadius={1}
-				/>
-				<Animated.Image
-					{...props}
-					source={source}
-					style={[style, { opacity: this.imageAnimated }, styles.imageOverlay]}
-					onLoad={this.handleImageLoad}
-				/>
+				{source ? (
+					<Animated.Image
+						{...props}
+						source={source}
+						style={[style, { opacity: this.imageAnimated }]}
+						onLoad={this.handleImageLoad}
+						blurRadius={1}
+					/>
+				) : (
+					<Animated.Image
+						{...props}
+						source={defaultImageSource}
+						style={[style, { opacity: this.defaultImageAnimated }]}
+						onLoad={this.handleDefaultImageLoad}
+						blurRadius={1}
+					/>
+				)}
 			</View>
 		);
 	}
