@@ -7,6 +7,7 @@ const App = () => {
 	let [fontsLoaded] = useFonts({
 		"Kufam-SemiBoldItalic": require("./assets/fonts/Kufam-SemiBoldItalic.ttf"),
 		"Lato-Regular": require("./assets/fonts/Lato-Regular.ttf"),
+		"Lato-Bold": require("./assets/fonts/Lato-Bold.ttf"),
 	});
 
 	if (!fontsLoaded) {

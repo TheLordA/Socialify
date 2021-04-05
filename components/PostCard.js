@@ -60,8 +60,6 @@ const PostCard = ({ item, onDelete, onPress, feed }) => {
 				<Divider />
 			)}
 
-			{feed ? <PostText>{item.post}</PostText> : null}
-
 			<InteractionWrapper>
 				<Interaction active={item.liked}>
 					<Ionicons name={likeIcon} size={25} color={likeIconColor} />
@@ -87,6 +85,7 @@ const PostCard = ({ item, onDelete, onPress, feed }) => {
 					) : null
 				) : null} */}
 			</InteractionWrapper>
+			{feed ? <PostText>{item.post}</PostText> : null}
 		</Card>
 	);
 };
